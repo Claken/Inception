@@ -4,7 +4,7 @@ MAINTAINER	sachouam <sachouam@student.42.fr>
 RUN apt-get -y update && apt-get -y upgrade
 RUN apt-get install -y nginx openssl
 
-ADD conf ./etc/nginx/sites-available/default
+COPY default ./etc/nginx/sites-available/default
 
 EXPOSE 80 443
 
