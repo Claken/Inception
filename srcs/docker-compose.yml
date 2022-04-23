@@ -1,24 +1,27 @@
 version: "3.3"
 services:
 	wordpress:
-		image: debian:buster
+		build: ./wordpress/.
+		restart: always
 
 		ports:
+
+		volumes:
 
 		depends_on:
 			- nginx
 
 	nginx:
-		image: debian:buster
+		build: ./nginx/.
+		restart: always
 
 		ports:
 
 	mariadb:
-		image: debian:buster
+		build: ./mariadb/.
+		restart: always
 
 		ports:
 
 		depends_on:
 			- nginx
-
-volumes:
