@@ -2,12 +2,21 @@ FROM 		debian:buster
 MAINTAINER	sachouam <sachouam@student.42.fr>
 
 RUN apt-get -y update && apt-get -y upgrade
-RUN apt-get install -y nginx openssl
+RUN apt-get install -y nginx openssl vim
 
-COPY default ./etc/nginx/sites-available/default
+# COPY nginx.conf ./etc/nginx/sites-available/default
+
+RUN     rm /var/www/html/index.nginx-debian.html
+
+COPY    nginx.conf ./etc/nginx
+COPY    nginx.conf ./etc/nginx/conf.d
+# RUN     cp ./etc/nginx/nginx.conf /etc/nginx/sites-available/.
+# RUN     ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/nginx.conf
 
 EXPOSE 80 443
 
-RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/ssl/certs/localhost.pem -keyout /etc/ssl/certs/localhost.key -subj "/C=FR/ST=75/L=Paris/O=42/OU=sachouam/CN=localhost"
+RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/ssl/certs/sachouam.com.pem -keyout /etc/ssl/certs/sachouam.com.key -subj "/C=FR/ST=75/L=Paris/O=42/OU=sachouam/CN=sachouam.com"   
 
 CMD ["nginx", "-g", "daemon off;"]
+
+# link ports like this : 0.0.0.0:443->443/tcp
