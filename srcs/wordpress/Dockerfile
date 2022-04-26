@@ -11,4 +11,4 @@ RUN			chown -R www-data:www-data /var/www/html/wordpress/
 RUN			chmod -R 755 /var/www/html/wordpress/
 RUN			rm latest-fr_FR.tar.gz
 
-CMD 
+CMD			
