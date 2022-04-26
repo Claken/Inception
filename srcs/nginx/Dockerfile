@@ -2,16 +2,10 @@ FROM 		debian:buster
 MAINTAINER	sachouam <sachouam@student.42.fr>
 
 RUN apt-get -y update && apt-get -y upgrade
-RUN apt-get install -y nginx openssl vim
-
-# COPY nginx.conf ./etc/nginx/sites-available/default
-
-RUN     rm /var/www/html/index.nginx-debian.html
+RUN apt-get install -y nginx openssl vim systemd
 
 COPY    nginx.conf ./etc/nginx
 COPY    nginx.conf ./etc/nginx/conf.d
-# RUN     cp ./etc/nginx/nginx.conf /etc/nginx/sites-available/.
-# RUN     ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/nginx.conf
 
 EXPOSE 80 443
 
