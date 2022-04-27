@@ -1,16 +1,16 @@
-FROM 		debian:buster
+FROM		debian:buster
 MAINTAINER	sachouam <sachouam@student.42.fr>
 
-RUN apt-get -y update && apt-get -y upgrade
-RUN apt-get install -y nginx openssl vim systemd
+RUN			apt-get -y update && apt-get -y upgrade
+RUN			apt-get install -y nginx openssl vim systemd
 
-COPY    nginx.conf ./etc/nginx
-COPY    nginx.conf ./etc/nginx/conf.d
+COPY		nginx.conf ./etc/nginx
+COPY		nginx.conf ./etc/nginx/conf.d
 
-EXPOSE 80 443
+EXPOSE		443
 
-RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/ssl/certs/sachouam.com.pem -keyout /etc/ssl/certs/sachouam.com.key -subj "/C=FR/ST=75/L=Paris/O=42/OU=sachouam/CN=sachouam.com"   
+RUN			openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/ssl/certs/sachouam.42.fr.pem -keyout /etc/ssl/certs/sachouam.42.fr.key -subj "/C=FR/ST=75/L=Paris/O=42/OU=sachouam/CN=sachouam.com"
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD			["nginx", "-g", "daemon off;"]
 
 # link ports like this : 0.0.0.0:443->443/tcp
