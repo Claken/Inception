@@ -7,6 +7,7 @@ services:
 		ports:
 
 		volumes:
+			- wp-files:/var/www
 
 		depends_on:
 			- nginx
@@ -14,6 +15,9 @@ services:
 	nginx:
 		build: ./nginx/.
 		restart: always
+
+		volumes:
+			- 
 
 		ports:
 
@@ -23,6 +27,22 @@ services:
 
 		ports:
 
+		volumes:
+			-
 		depends_on:
 			- nginx
-	networks:
+networks:
+
+volumes:
+	wp_db:
+		driver: local
+		driver_opts:
+			type: "none"
+			o: "bind"
+			device: /home/
+	wp_files:
+		driver: local
+		driver_opts:
+			type: "none"
+			o: "bind"
+			device: /home/sachouam/data/wp_files
