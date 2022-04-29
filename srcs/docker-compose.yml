@@ -7,7 +7,7 @@ services:
 		ports:
 
 		volumes:
-			- wp-files:/var/www
+			- wp_files:/var/www/html
 
 		depends_on:
 			- nginx
@@ -17,9 +17,10 @@ services:
 		restart: always
 
 		volumes:
-			- 
+			- wp_files:/var/www/html
 
 		ports:
+			- 443:443
 
 	mariadb:
 		build: ./mariadb/.
@@ -28,7 +29,7 @@ services:
 		ports:
 
 		volumes:
-			-
+			- wp_db:/var/www/html
 		depends_on:
 			- nginx
 networks:
@@ -39,10 +40,11 @@ volumes:
 		driver_opts:
 			type: "none"
 			o: "bind"
-			device: /home/
+			device: ${HOME}/data/wp_db
+
 	wp_files:
 		driver: local
 		driver_opts:
 			type: "none"
 			o: "bind"
-			device: /home/sachouam/data/wp_files
+			device: ${HOME}/data/wp_files
