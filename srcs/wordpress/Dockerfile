@@ -5,9 +5,6 @@ RUN			apt-get -y update && apt-get -y upgrade
 RUN			apt-get install -y wget vim systemd
 RUN			apt-get install -y php5-fpm
 
-ADD 			/home/sachouam/data/wp_db/database_conf.sql ./database_conf.sql
-RUN 			service mysql start && mysql -u root --skip-password < database_conf.sql
-
 RUN			wget https://fr.wordpress.org/latest-fr_FR.tar.gz
 RUN			tar -zxvf latest-fr_FR.tar.gz
 RUN			mkdir /var/www/ && mkdir /var/www/html/

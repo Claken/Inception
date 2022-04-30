@@ -27,9 +27,11 @@ services:
 		restart: always
 
 		ports:
-
+			- 3306:3306
 		volumes:
 			- wp_db:/var/www/html
+		environment:
+			
 		depends_on:
 			- nginx
 networks:
