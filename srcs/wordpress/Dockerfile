@@ -2,20 +2,19 @@ FROM		debian:buster
 MAINTAINER	sachouam <sachouam@student.42.fr>
 
 RUN			apt-get -y update && apt-get -y upgrade
-RUN			apt-get install -y wget vim systemd
-RUN			apt-get install -y php5-fpm
+RUN			apt-get install -y wget vim systemd curl
+RUN			apt-get install -y php-fpm
 
-RUN			wget https://fr.wordpress.org/latest-fr_FR.tar.gz
-RUN			tar -zxvf latest-fr_FR.tar.gz
-RUN			mkdir /var/www/ && mkdir /var/www/html/
-RUN			mv /wordpress /var/www/html/
-RUN			chown -R www-data:www-data /var/www/html/wordpress/
-RUN			chmod -R 755 /var/www/html/wordpress/
+RUN         curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN         chmod +x wp-cli.phar
+RUN         mv wp-cli.phar /usr/local/bin/wp-cli
 
-RUN			rm latest-fr_FR.tar.gz
+WORKDIR     var/www/html
 
-ADD			./wp-config.php ./var/www/html/wordpress/wp-config.php
+RUN         wp-cli core download
 
-EXPOSE			9000
+RUN         wp-cli core install --url=YOUR_DOMAIN_NAME --title=YOUR_BLOG_TITLE --admin_user=ADMIN_USERNAME --a
+
+EXPOSE		9000
 
 CMD			["/usr/sbin/php-fpm7.3", "-F", "-R"]

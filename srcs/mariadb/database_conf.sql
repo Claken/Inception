@@ -1,4 +1,4 @@
-CREATE DATABASE sachouam;
+CREATE DATABASE sachoudb;
 CREATE USER 'sachouam'@'localhost' IDENTIFIED BY '1234';
-GRANT ALL ON sachouam.* TO 'sachouam'@'localhost';
+GRANT ALL ON sachoudb.* TO 'sachouam'@'localhost';
 FLUSH PRIVILEGES;
