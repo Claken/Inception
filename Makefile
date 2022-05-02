@@ -1,46 +1,45 @@
-NAME            =       containers
-CXX                     =       c++
-CXXFLAGS        =       -Wall -Wextra -Werror -std=c++98
+.PHONY:     build up start down destroy stop restart purge sclean display fclean logs
 
-SRC                     =       ./srcs/map_test.cpp \
+build:
+            docker-compose -f srcs/docker-compose.yml build $(c)
 
-SVS                     =       ./srcs/vector_and_stack_test.cpp \
+up:
+            docker-compose -f srcs/docker-compose.yml up -d $(c)
+    
+start:
+            docker-compose -f srcs/docker-compose.yml start $(c)
 
-SMP                     =       ./srcs/containers_perf.cpp \
+down:
+            docker-compose -f srcs/docker-compose.yml down $(c)
 
-OBJ                     =       $(SRC:%.cpp=%.o)
+destroy:
+            docker-compose -f srcs/docker-compose.yml down -v $(c)
 
-OBVS            =       $(SVS:%.cpp=%.o)
+stop:
+            docker-compose -f srcs/docker-compose.yml stop $(c)
 
-OBMP            =       $(SMP:%.cpp=%.o)
+restart:
+            docker-compose -f srcs/docker-compose.yml stop $(c)
+            docker-compose -f srcs/docker-compose.yml up -d $(c)
 
-all:                            $(NAME)
+re:         stop build up
 
-$(NAME):                        $(OBJ)
-                                        $(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
+purge:
+            docker rmi maria-db
+            docker rmi wordpress
+            docker rmi nginx
+            docker rmi debian:buster
 
-map:                            all
-                                        ./containers
+display:
+            docker ps -a
+            docker images
+            docker network ls
+            docker volume ls
 
-vector_stack:           $(OBVS)
-                                        $(CXX) $(CXXFLAGS) $(OBVS) -o $(NAME)
-                                        ./containers
+fclean: 
+            docker system prune -a
 
-containers_perf:        $(OBMP)
-                                        $(CXX) $(CXXFLAGS) $(OBMP) -o $(NAME)
-                                        ./containers
+sclean:     destroy purge
 
-clean:
-                        rm -rf $(OBJ)
-                        rm -rf $(OBVS)
-                        rm -rf $(OBMP)
-
-fclean:         clean
-                        rm -rf $(NAME)
-
-re:                     fclean all
-
-run:
-                        make && ./$(NAME)
-
-.PHONY:         all clean fclean re
+logs:
+            docker-compose -f srcs/docker-compose.yml logs --tail=100 -f $(c)

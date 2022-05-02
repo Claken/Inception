@@ -1,52 +1,52 @@
 version: "3.3"
 services:
-	wordpress:
-		build: ./wordpress/.
-		restart: always
+# wordpress:
+# 	build: ./wordpress/.
+# 	restart: always
 
-		ports:
+# 	expose:
+# 		- 9000
 
-		volumes:
-			- wp_files:/var/www/html
+# 	volumes:
+# 		- wp_files:/var/www/html
 
-		depends_on:
-			- nginx
+# 	depends_on:	
+# 		- nginx
+  nginx:
+    build:
+      context: ./nginx/.
+    image: nginx:02
+    restart: always
+    container_name: nginx
+    volumes:
+      - wp_files:/var/www/html
+    ports:
+      - 443:443
 
-	nginx:
-		build: ./nginx/.
-		restart: always
+# mariadb:
+# 	build: ./mariadb/.
+# 	restart: always
 
-		volumes:
-			- wp_files:/var/www/html
+# 	expose:
+# 		- 3306
+# 	volumes:
+# 		- wp_db:/var/www/html
+# 	environment:
 
-		ports:
-			- 443:443
-
-	mariadb:
-		build: ./mariadb/.
-		restart: always
-
-		ports:
-			- 3306:3306
-		volumes:
-			- wp_db:/var/www/html
-		environment:
-			
-		depends_on:
-			- nginx
-networks:
+# 	depends_on:
+# 		- nginx
+# networks:
 
 volumes:
-	wp_db:
-		driver: local
-		driver_opts:
-			type: "none"
-			o: "bind"
-			device: ${HOME}/data/wp_db
-
-	wp_files:
-		driver: local
-		driver_opts:
-			type: "none"
-			o: "bind"
-			device: ${HOME}/data/wp_files
+  wp_db:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: ${HOME}/data/wp_db
+  wp_files:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: ${HOME}/data/wp_files
