@@ -12,5 +12,3 @@ EXPOSE		443
 RUN			openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/ssl/certs/sachouam.42.fr.pem -keyout /etc/ssl/certs/sachouam.42.fr.key -subj "/C=FR/ST=75/L=Paris/O=42/OU=sachouam/CN=sachouam.com"
 
 CMD			["nginx", "-g", "daemon off;"]
-
-# link ports like this : 0.0.0.0:443->443/tcp

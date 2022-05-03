@@ -6,3 +6,7 @@ RUN		    apt-get install -y vim systemd mariadb-server
 
 ADD 		./database_conf.sql ./database_conf.sql
 RUN 		service mysql start && mysql -u root --skip-password < database_conf.sql
+
+EXPOSE		3306
+
+CMD 		["mysqld_safe"]
