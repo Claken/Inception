@@ -1,17 +1,19 @@
 version: "3.3"
 services:
 # wordpress:
-# 	build: ./wordpress/.
+# 	build:
+      context: ./wordpress/.
+    image: wordpress:02
 # 	restart: always
 
 # 	expose:
 # 		- 9000
 
 # 	volumes:
-# 		- wp_files:/var/www/html
+# 		- wp_files:/var/www/html/wordpress
 
 # 	depends_on:	
-# 		- nginx
+#     - mariadb
   nginx:
     build:
       context: ./nginx/.
@@ -19,12 +21,15 @@ services:
     restart: always
     container_name: nginx
     volumes:
-      - wp_files:/var/www/html
+      - wp_files:/var/www/html/wordpress
     ports:
       - 443:443
-
+    depends_on:
+      - wordpress
 # mariadb:
-# 	build: ./mariadb/.
+# 	build:
+      context: ./mariadb/.
+    image: mariadb:02
 # 	restart: always
 
 # 	expose:
@@ -32,9 +37,6 @@ services:
 # 	volumes:
 # 		- wp_db:/var/www/html
 # 	environment:
-
-# 	depends_on:
-# 		- nginx
 # networks:
 
 volumes:
