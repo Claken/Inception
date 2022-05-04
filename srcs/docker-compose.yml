@@ -1,6 +1,8 @@
 version: "3.3"
 services:
   # wordpress:
+  #   env_file:
+  #     - .env
   #   build:
   #     context: ./wordpress/.
   #   image: wordpress:02
@@ -13,6 +15,8 @@ services:
   # nginx:
   #   build:
   #     context: ./nginx/.
+  #   env_file:
+  #     - .env
   #   image: nginx:02
   #   restart: always
   #   container_name: nginx
@@ -20,8 +24,8 @@ services:
   #     - wp_files:/var/www/html
   #   ports:
   #     - 443:443
-  #   depends_on:
-  #     - wordpress
+    # depends_on:
+    #   - wordpress
   mariadb:
     env_file:
       - .env
