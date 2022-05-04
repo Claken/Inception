@@ -9,5 +9,7 @@ RUN		    apt-get install -y vim systemd mariadb-server
 
 EXPOSE		3306
 
-ENTRYPOINT	sh run_mdb.sh
-CMD	["mysqld_safe"]
+COPY		./run_mdb.sh /usr/local/bin
+
+ENTRYPOINT	["/bin/bash", "run_mdb.sh"]
+CMD			["mysqld_safe"]
