@@ -11,14 +11,11 @@ RUN         mv wp-cli.phar /usr/local/bin/wp-cli
 
 WORKDIR		/var/www/html
 RUN			mkdir wordpress
-WORKDIR		./wordpress
+RUN         chmod -R 755 /var/www/html/wordpress
 
-RUN         wp-cli core download --allow-root
-
-RUN         wp-cli config create --dbname=sachoudb --dbuser=sachouam --dbpass=1234 --locale=en_EN --allow-root
-
-RUN         wp-cli core install --url=sachouam.42.fr --title=Hello_World --admin_user=sachouam --admin_password=1234 --admin_email=sachouam@student.42.fr --allow-root
+COPY        ./run_wp.sh /usr/local/bin
 
 EXPOSE		9000
 
-ENTRYPOINT	["/usr/sbin/php-fpm7.3", "-F", "-R"]
+ENTRYPOINT  ["/bin/bash", "run_wp.sh"]
+CMD	        ["/usr/sbin/php-fpm7.3", "-F", "-R"]

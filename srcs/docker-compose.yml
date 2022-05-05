@@ -24,8 +24,8 @@ services:
   #     - wp_files:/var/www/html
   #   ports:
   #     - 443:443
-    # depends_on:
-    #   - wordpress
+  #   depends_on:
+  #     - wordpress
   mariadb:
     env_file:
       - .env
@@ -37,7 +37,9 @@ services:
     volumes:
       - wp_db:/var/www/html
 
-# networks:
+networks:
+  default:
+    driver: custom-driver-1
 
 volumes:
   wp_db:
