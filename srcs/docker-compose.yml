@@ -1,45 +1,51 @@
 version: "3.3"
 services:
-  # wordpress:
-  #   env_file:
-  #     - .env
-  #   build:
-  #     context: ./wordpress/.
-  #   image: wordpress:02
-  #   restart: always
-  #   container_name: wordpress
-  #   volumes:
-  #     - wp_files:/var/www/html
-  #   depends_on:
-  #     - mariadb
-  # nginx:
-  #   build:
-  #     context: ./nginx/.
-  #   env_file:
-  #     - .env
-  #   image: nginx:02
-  #   restart: always
-  #   container_name: nginx
-  #   volumes:
-  #     - wp_files:/var/www/html
-  #   ports:
-  #     - 443:443
-  #   depends_on:
-  #     - wordpress
+  wordpress:
+    env_file:
+      - .env
+    build:
+      context: ./wordpress/.
+    image: wordpress:inception
+    restart: always
+    container_name: wordpress
+    volumes:
+      - wp_files:/var/www/html
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+  nginx:
+    build:
+      context: ./nginx/.
+    env_file:
+      - .env
+    image: nginx:inception
+    restart: always
+    container_name: nginx
+    volumes:
+      - wp_files:/var/www/html
+    ports:
+      - 443:443
+    depends_on:
+      - wordpress
+    networks:
+      - inception
   mariadb:
     env_file:
       - .env
     build:
       context: ./mariadb/.
-    image: mariadb:02
+    image: mariadb:inception
     container_name: mariadb
     restart: always
     volumes:
-      - wp_db:/var/www/html
+      - wp_db:/var/lib/mysql
+    networks:
+      - inception
 
 networks:
-  default:
-    driver: custom-driver-1
+  inception:
+    driver: bridge
 
 volumes:
   wp_db:

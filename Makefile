@@ -25,10 +25,9 @@ restart:
 re:			stop build up
 
 purge:
-			docker rmi maria-db
-			docker rmi wordpress
-			docker rmi nginx
-			docker rmi debian:buster
+			docker rmi mariadb:inception
+			docker rmi wordpress:inception
+			docker rmi nginx:inception
 
 display:
 			docker ps -a

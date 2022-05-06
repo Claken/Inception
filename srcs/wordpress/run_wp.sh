@@ -1,5 +1,7 @@
 #!/bin/sh
-cd /var/www/html/wordpress
+# cd /var/www/html/wordpress
+# set -xv
+cd /var/www/html
 wp-cli core download --allow-root
 wp-cli config create --dbname=$DB_NAME --dbuser=$THE_USER --dbpass=$DB_PASSWORD --locale=en_EN --allow-root
 wp-cli core install --url=$DOMAIN_NAME --title=Hello_World --admin_user=$THE_USER \
