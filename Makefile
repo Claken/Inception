@@ -4,6 +4,9 @@ build:
 			docker-compose -f srcs/docker-compose.yml build
 
 up:
+			mkdir ${HOME}/data
+			mkdir ${HOME}/data/wp_files
+			mkdir ${HOME}/data/wp_db
 			docker-compose -f srcs/docker-compose.yml up -d
     
 start:
@@ -14,6 +17,7 @@ down:
 
 destroy:
 			docker-compose -f srcs/docker-compose.yml down -v
+			sudo rm -rf ${HOME}/data
 
 stop:
 			docker-compose -f srcs/docker-compose.yml stop
