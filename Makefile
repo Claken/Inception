@@ -1,12 +1,15 @@
 .PHONY:		build up start down destroy stop restart purge sclean display fclean logs
 
+$(MKDIR):
+			mkdir ${HOME}/data
+			mkdir ${HOME}/data/wp_files
+			mkdir ${HOME}/data/wp_db
+
 build:
 			docker-compose -f srcs/docker-compose.yml build
 
 up:
-			mkdir ${HOME}/data
-			mkdir ${HOME}/data/wp_files
-			mkdir ${HOME}/data/wp_db
+			$(MKDIR)
 			docker-compose -f srcs/docker-compose.yml up -d
     
 start:
