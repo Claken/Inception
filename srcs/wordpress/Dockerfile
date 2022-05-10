@@ -2,7 +2,7 @@ FROM		debian:buster
 MAINTAINER	sachouam <sachouam@student.42.fr>
 
 RUN			apt-get -y update && apt-get -y upgrade
-RUN			apt-get install -y wget vim systemd curl grep mariadb-client
+RUN			apt-get install -y wget vim systemd curl grep mariadb-client procps
 RUN			apt-get install -y php php-fpm php-mysql php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip php-mysqli
 
 RUN         curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
