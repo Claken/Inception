@@ -11,6 +11,10 @@ RUN         mv wp-cli.phar /usr/local/bin/wp-cli
 
 RUN         mkdir -p /run/php
 
+WORKDIR     /etc/php/7.3/fpm/pool.d
+RUN         sed -i 's|listen = /run/php/php7.3-fpm.sock|listen = 9000|g' www.conf
+WORKDIR     /
+
 # WORKDIR		/var/www/html
 # RUN			mkdir wordpress
 # RUN         chmod -R 755 /var/www/html/wordpress
