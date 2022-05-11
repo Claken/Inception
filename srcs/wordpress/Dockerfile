@@ -13,6 +13,9 @@ RUN         mkdir -p /run/php
 
 WORKDIR     /etc/php/7.3/fpm/pool.d
 RUN         sed -i 's|listen = /run/php/php7.3-fpm.sock|listen = 9000|g' www.conf
+
+# WORKDIR     /etc/mysql/
+# RUN         sed -i -e '$asocket=/var/lib/mysql/mysql.sock' my.cnf
 WORKDIR     /
 
 # WORKDIR		/var/www/html
