@@ -49,6 +49,9 @@ display:
 			docker network ls
 			docker volume ls
 
+update:
+			make down && make destroy && make up
+
 fclean: 
 			docker system prune -a
 
