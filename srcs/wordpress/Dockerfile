@@ -14,6 +14,9 @@ RUN         mkdir -p /run/php
 WORKDIR     /etc/php/7.3/fpm/pool.d
 RUN         sed -i 's|listen = /run/php/php7.3-fpm.sock|listen = 9000|g' www.conf
 
+WORKDIR     /etc/mysql/mariadb.conf.d
+RUN         sed -i 's|socket = /var/run/mysqld/mysqld.sock|# socket = /var/run/mysqld/mysqld.sock|g' 50-client.cnf
+
 # WORKDIR     /etc/mysql/
 # RUN         sed -i -e '$asocket=/var/lib/mysql/mysql.sock' my.cnf
 WORKDIR     /

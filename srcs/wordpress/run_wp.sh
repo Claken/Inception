@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/she
 # cd /var/www/html/wordpress
 set -xv
 cd /var/www/html
