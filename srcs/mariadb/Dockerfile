@@ -24,7 +24,8 @@ WORKDIR     /
 
 EXPOSE		3306
 
-COPY		./run_mdb.sh /usr/local/bin
+COPY		./run_mdb.sh    /usr/local/bin
+COPY		./my.cnf        /etc/mysql
 
 ENTRYPOINT	["/bin/bash", "run_mdb.sh"]
 CMD         ["mysqld_safe"]
