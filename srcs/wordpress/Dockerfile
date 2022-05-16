@@ -10,20 +10,13 @@ RUN         chmod +x wp-cli.phar
 RUN         mv wp-cli.phar /usr/local/bin/wp-cli
 
 RUN         mkdir -p /run/php
+# create this directory in order to start /usr/sbin/php-fpm7.3. Otherwise : ERROR: Unable to create the PID file (/run/php/php7.3-fpm.pid).: No such file or directory (2)
 
 WORKDIR     /etc/php/7.3/fpm/pool.d
 RUN         sed -i 's|listen = /run/php/php7.3-fpm.sock|listen = 9000|g' www.conf
+# for accepting requests coming from port 9000
 
-WORKDIR     /etc/mysql/mariadb.conf.d
-RUN         sed -i 's|socket = /var/run/mysqld/mysqld.sock|# socket = /var/run/mysqld/mysqld.sock|g' 50-client.cnf
-
-# WORKDIR     /etc/mysql/
-# RUN         sed -i -e '$asocket=/var/lib/mysql/mysql.sock' my.cnf
 WORKDIR     /
-
-# WORKDIR		/var/www/html
-# RUN			mkdir wordpress
-# RUN         chmod -R 755 /var/www/html/wordpress
 
 COPY        ./run_wp.sh /usr/local/bin
 
