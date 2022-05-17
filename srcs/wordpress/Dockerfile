@@ -14,7 +14,7 @@ RUN         mkdir -p /run/php
 
 WORKDIR     /etc/php/7.3/fpm/pool.d
 RUN         sed -i 's|listen = /run/php/php7.3-fpm.sock|listen = 9000|g' www.conf
-# for accepting requests coming from port 9000
+# for accepting requests coming from port 9000 (i.e. coming from nginx)
 
 WORKDIR     /
 
