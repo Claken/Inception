@@ -10,3 +10,5 @@ This project consists of setting up three services inside three differents conta
 - I have learned to use MySQL to handle a database
 
 # Prerequisites
+
+# Usage
