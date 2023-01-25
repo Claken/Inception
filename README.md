@@ -1,6 +1,7 @@
 # ! README IN PROGRESS !
 
 # INCEPTION
+This project consists of setting up three services inside three differents containers : nginx, mariadb and wordpress.
 
 # WHAT THIS PROJECT BROUGHT ME
 - I have learned what an image and a container are,
