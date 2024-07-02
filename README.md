@@ -24,3 +24,7 @@ Then, when the building is finished, type this command :
 ```
 make start
 ```
+Finally, when the building is done, type this URL on your web browser :
+```
+https://localhost:443
+```
