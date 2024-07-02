@@ -12,7 +12,7 @@ This project consists of setting up three services inside three differents conta
 # Prerequisites
 
 You must install docker and docker-compose </br>
-If you use Linux, follow [this](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04) and [this](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04) link and follow their instructions.
+If you use Linux, click on [this](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04) and [this](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04) link and follow their instructions.
 
 # Usage
 
