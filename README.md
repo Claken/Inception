@@ -11,4 +11,6 @@ This project consists of setting up three services inside three differents conta
 
 # Prerequisites
 
+You must install docker and docker-compose
+
 # Usage
