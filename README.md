@@ -14,6 +14,9 @@ This project consists of setting up three services inside three differents conta
 You must install docker and docker-compose </br>
 If you use Linux, click on [this](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04) and [this](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04) link and follow their instructions.
 
+You also need to add `sachouam.42.fr` as a domain name.
+Click on this [link](https://www.liquidweb.com/blog/edit-hosts-file-macos-windows-linux/) to know how to do it.
+
 # Usage
 
 First, type this command to build the project where the Makefile is :
