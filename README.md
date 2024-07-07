@@ -1,5 +1,3 @@
-# ! README IN PROGRESS !
-
 # INCEPTION
 This project consists of setting up three services inside three differents containers : nginx, mariadb and wordpress.
 
