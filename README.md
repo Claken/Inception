@@ -33,3 +33,6 @@ https://localhost:443
 ```
 Once this done, something like this will appear :
 ![Screenshot_from_2024-07-05_19-51-25](https://github.com/Claken/Inception/assets/51683861/f61b272e-b56c-4c46-94d2-1d0917b3e479)
+Click on the "Advanced" button, the on the "Accept the risk" button :
+![Screenshot_from_2024-07-05_19-54-30](https://github.com/Claken/Inception/assets/51683861/0b795752-7963-4718-aae6-cd86117ce683)
+
