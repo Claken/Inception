@@ -38,5 +38,5 @@ Click on the "Advanced" button, then click on the "Accept the risk and continue"
 <br/>
 You now have access to a WordPress service : 
 ![Screenshot_from_2024-07-05_19-54-59](https://github.com/Claken/Inception/assets/51683861/5cb99bb7-c200-4c3b-aefa-02d8d25403b2)
-*Have fun with it !*
+**Have fun with it !**
 
