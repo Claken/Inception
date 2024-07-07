@@ -36,7 +36,7 @@ Once this done, something like this will appear :
 Click on the "Advanced" button, then click on the "Accept the risk and continue" button : <br/>
 ![Screenshot_from_2024-07-05_19-54-30](https://github.com/Claken/Inception/assets/51683861/b351199c-6fd3-4413-892a-abbec15da7f6)
 <br/>
-You now have access to a WordPress service : <br/>
+You now have access to a WordPress service : 
 ![Screenshot_from_2024-07-05_19-54-59](https://github.com/Claken/Inception/assets/51683861/5cb99bb7-c200-4c3b-aefa-02d8d25403b2)
 Have fun with it !
 
