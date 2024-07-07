@@ -31,3 +31,5 @@ Finally, when the process is done, type this URL on your web browser :
 ```
 https://localhost:443
 ```
+Once this done, something like this will appear :
+![Screenshot_from_2024-07-05_19-51-25](https://github.com/Claken/Inception/assets/51683861/f61b272e-b56c-4c46-94d2-1d0917b3e479)
