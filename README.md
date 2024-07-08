@@ -13,7 +13,7 @@ You must install docker and docker-compose. </br>
 If you use Linux, click on [this](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04) and [this](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04) link and follow their instructions.
 
 You also need to add `sachouam.42.fr` as a domain name. </br>
-Click on this [link](https://www.liquidweb.com/blog/edit-hosts-file-macos-windows-linux/) to know how to do it.
+Click on this [link](https://www.liquidweb.com/blog/edit-hosts-file-macos-windows-linux/) to find out how.
 
 # Usage
 
